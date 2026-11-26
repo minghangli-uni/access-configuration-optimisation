@@ -1,0 +1,51 @@
+[project]
+name = "access-configuration-optimisation"
+dynamic = ["version"]
+description = "Closed-loop, model-based optimisation of how the ACCESS climate models are run: cores, layouts, decompositions and I/O."
+authors = [
+  {name = "Minghang Li", email = "minghang.li1@anu.edu.au"},
+]
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "COPYRIGHT.txt"]
+keywords = ["optimisation", "performance", "access"]
+classifiers = [
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = [
+    "setuptools>=80",
+    "setuptools-scm[simple]>=8",
+]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",  # testing
+    "pytest-cov",  # coverage
+    "ruff",  # linting
+    "pre-commit",  # pre-commit hooks
+]
+
+[project.urls]
+bugs = "https://github.com/ACCESS-NRI/access-configuration-optimisation/issues"
+homepage = "https://github.com/ACCESS-NRI/access-configuration-optimisation"
+
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+local_scheme = "node-and-date"
+
+[tool.pytest.ini_options]
+addopts = ["--cov=access.optimisation", "--cov-report=term", "--cov-report=html", "--cov-report=xml"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "C4", "SIM", "PTH", "UP", "I", "N", "C901"]
